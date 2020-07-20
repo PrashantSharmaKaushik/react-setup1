@@ -1,6 +1,15 @@
 import React, { Component, Fragment } from "react";
-import App from "./App"
+import {
+    Login,
+    Signup
+} from "./containers";
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { withTranslation, Trans } from 'react-i18next';
+
+
+const PublicRoutes = ({component : Component, path})=>{
+ return <Route exact path={path} component={Component}></Route>
+}
 
 class Routes extends Component {
     render() {
@@ -8,7 +17,8 @@ class Routes extends Component {
             <Fragment>
                 <BrowserRouter>
                     <Switch>
-                        <Route path="/" component={App}></Route>
+                        <PublicRoutes exact path="/" component={Login}></PublicRoutes>
+                        <PublicRoutes exact path="/signup" component={Signup}></PublicRoutes>
                     </Switch>
                 </BrowserRouter>
             </Fragment>
